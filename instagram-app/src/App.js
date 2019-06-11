@@ -13,9 +13,18 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      data: [] 
+      data: [] //ComponentDidMount
      }
   }
+
+//the empty array is going to be filled with the dummyData
+
+  componentDidMount(){ //componentDidMount is updating our state
+    this.setState({
+      data: dummyData
+    })
+  }
+
   render() { 
     return ( 
    <div className="App">

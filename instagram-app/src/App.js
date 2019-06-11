@@ -7,33 +7,75 @@ import dummyData from '../src/dummy-data';
 
 //it keeps life simple when trying to debug
 
+
 import './App.css';
 
 class App extends React.Component {
-   state = { 
-      data: [] //ComponentDidMount
-     
-  }
+  state = { 
+    data: [],
+    // //the empty array is going to be filled with the dummyData
+    filteredPosts: []
+  };
 
-//the empty array is going to be filled with the dummyData
-
-  componentDidMount(){ //componentDidMount is updating our state
+  changeHandler = e => {
     this.setState({
-      data: dummyData
+        [e.target.name]: e.target.value
     })
   }
 
-  render() { 
+  componentDidMount(){
+    this.setState({data: dummyData})
+  }
+
+  searchFilter = e => {
+    const filtered = this.state.data.filter(post => post.username.toLowerCase().includes(e.target.value.toLowerCase()))
+    this.setState({ filteredPosts: filtered})
+  }
+
+  render() {
+    console.log('render',this.state.data); 
     return ( 
-   <div className="App">
-      
-    <SearchBar />
-    <PostContainer /> 
+      <div className="App">
+        <SearchBar 
+          newSearch={this.state.search}
+          searchFilter={this.searchFilter}
+        />
+
+        <PostContainer data={this.state.data} filteredPosts={this.state.filteredPosts} searchFilter={this.searchFilter} />
+    </div>
+     );
    
-  </div> 
-  );
   }
 }
  
 export default App;
+
+
+// class App extends React.Component {
+//    state = { 
+//       data: [], //ComponentDidMount
+     
+//   }
+
+// //the empty array is going to be filled with the dummyData
+
+//   componentDidMount(){ //componentDidMount is updating our state
+//     this.setState({
+//       data: dummyData
+//     })
+//   }
+
+//   render() { 
+//     return ( 
+//    <div className="App">
+      
+//     <SearchBar />
+//     <PostContainer /> 
+   
+//   </div> 
+//   );
+//   }
+// }
+ 
+// export default App;
 

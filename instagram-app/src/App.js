@@ -10,11 +10,9 @@ import dummyData from '../src/dummy-data';
 import './App.css';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
+   state = { 
       data: [] //ComponentDidMount
-     }
+     
   }
 
 //the empty array is going to be filled with the dummyData

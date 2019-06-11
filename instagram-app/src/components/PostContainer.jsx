@@ -7,9 +7,34 @@ class PostContainer extends Component {
     
     render() {
         return (
-           <>  
-            <CommentSection />
-            </>
+          <div className="post-container">
+              {this.props.data.map(post => 
+              {
+                  return (
+                    //   fragment wrapper 
+                      <>
+                        {/* thumbnail and username */}
+                      <header> 
+                          <img src={postMessage.thumbnailUrl} alt="thumbnail"/>
+                      </header>
+
+                        {/* post image */}
+                      <img src={post.imgUrl} alt={post.id}/>
+
+                    {/* the like bar */}
+                    <section className="likebar"> 
+                    {post.likes} likes
+                    </section>
+
+                    {/* the comment section */}
+                    <CommentSection 
+                    comments={post.comments}
+                    timestamp={post.timestamp} />
+                      </>
+
+                  )
+              })}
+          </div>
         );
     }
 }

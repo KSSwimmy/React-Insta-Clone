@@ -60,6 +60,7 @@ class PostContainer extends Component {
 }
 }
 
+//passing input into thw comment section
  
 export default PostContainer;
 

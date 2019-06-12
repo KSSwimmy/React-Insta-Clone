@@ -24,21 +24,24 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    this.setState({data: dummyData})
+    this.setState({data: dummyData}) //
   }
 
+  //searchFiler Method so that we can filter our posts. Which means we're going to filter our data
   searchFilter = e => {
     const filtered = this.state.data.filter(post => post.username.toLowerCase().includes(e.target.value.toLowerCase()))
-    this.setState({ filteredPosts: filtered})
+    this.setState({ filteredPosts: filtered}) //if anything meets the state "filteredPosts" 
   }
+//.includes lets you check the user name that you're searching for {e.target.value}
 
+  //
   render() {
     console.log('render',this.state.data); 
     return ( 
       <div className="App">
         <SearchBar 
           newSearch={this.state.search}
-          searchFilter={this.searchFilter}
+          searchFilter={this.searchFilter} //it filers out new searches in the search bar
         />
 
         <PostContainer data={this.state.data} filteredPosts={this.state.filteredPosts} searchFilter={this.searchFilter} />

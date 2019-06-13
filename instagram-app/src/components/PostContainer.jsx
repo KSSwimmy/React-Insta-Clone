@@ -9,8 +9,8 @@ class PostContainer extends Component {
             <div className="post-container">
                 {this.props.filteredPosts.length === 0 ? this.props.data.map(post => {
                     return (
-                         //   fragment wrapper 
-                        <>
+                         //   fragment wrapper turned <div>
+                        <div className= "thePostContainer">
 
                         <header>
                             <img src={post.thumbnailUrl} alt="thumbnail"/>
@@ -28,12 +28,12 @@ class PostContainer extends Component {
                             timestamp={post.timestamp}
                         />
 
-                        </>
+                        </div>
                    ) //  return
 
                 }) : this.props.filteredPosts.map(post => {
                     return (
-                        <>
+                        <div className= "thePostContainer">
 
                         <header>
                             <img src={post.thumbnailUrl} alt="thumbnail"/>
@@ -51,7 +51,7 @@ class PostContainer extends Component {
                             timestamp={post.timestamp}
                         />
 
-                        </>
+                        </div>
                     ) }
                 )
                 }
